@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}pinax-project-account{% endblock %}
+{% block head_title %}SNI{% endblock %}
 
 {% block body_class %}home{% endblock %}
 
@@ -10,13 +10,10 @@
     <section class="jumbotron">
         <div class="container">
             {% include "_messages.html" %}
-            <h1>{% blocktrans %}Welcome to<br>pinax-project-account{% endblocktrans %}</h1>
+            <h1>{% blocktrans %}Welcome to<br>SNI{% endblocktrans %}</h1>
             <p>
                 {% blocktrans %}
-                In addition to what is provided by the "zero" project, this project
-                provides thorough integration with django-user-accounts, adding
-                comprehensive account management functionality. It is a foundation
-                suitable for most sites that have user accounts.
+                We simply transfer
                 {% endblocktrans %}
             </p>
             {% if not user.is_authenticated %}

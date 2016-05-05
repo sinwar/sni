@@ -1,7 +1,9 @@
+from django.views.generic import TemplateView 
 import account.views
 
 from .forms import SignupForm
 from .models import UserProfile
+
 
 class SignupView(account.views.SignupView):
 
@@ -17,3 +19,7 @@ class SignupView(account.views.SignupView):
     def after_signup(self, form):
     	self.update_profile(form)
     	super(SignupView, self).after_signup(form)
+
+class ProfileView(TemplateView):
+	template_name = "sni/profile.html"
+	model = UserProfile

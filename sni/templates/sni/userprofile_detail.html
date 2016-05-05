@@ -3,9 +3,9 @@
 {% load i18n %}
 
 {% block body %}
-	<div class="row">
+	<div class="row" style="margin-top: 200px;">
 		<div class="col-md-12">
-			<h4>{% trans "username" %} - {{ user }}</h4>
+			<h4>{% trans "username" %} - {{ object.user.username }}</h4>
 			<h4>{% trans "first_name" %} - {{ object.first_name }} </h4>
 			<h4>{% trans "last_name" %} - {{ object.last_name }}</h4>
 		</div>

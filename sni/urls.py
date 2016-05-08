@@ -11,7 +11,7 @@ from .views import SignupView, ProfileView, ProView
 urlpatterns = [
     url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
     url(r"^admin/", include(admin.site.urls)),
-    url(r"^account/profile/$",ProView.as_view(), name = "account_pro"),
+    url(r"^account/profile/(?P<user>[a-zA-Z0-9_-]+)/$",ProView, name = "account_pro"),
     url(r"^account/profile/(?P<pk>\d+)/$",ProfileView.as_view(), name = "account_profile"),
     url(r"^account/signup/$", SignupView.as_view(), name = "account_signup"),
     url(r"^account/", include("account.urls")),

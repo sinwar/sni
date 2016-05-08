@@ -1,5 +1,5 @@
 from django.http import Http404, HttpResponseForbidden, HttpRequest, HttpResponse
-from django.shortcuts import redirect, get_object_or_404, render_to_response
+from django.shortcuts import redirect, get_object_or_404, render_to_response, render
 from django.views.generic import TemplateView, DetailView
 import account.views
 from .forms import SignupForm
@@ -21,15 +21,20 @@ class SignupView(account.views.SignupView):
         self.update_profile(form)
         super(SignupView, self).after_signup(form)
 
+def ProView(request, user):
+    user = UserProfile.objects.get(user = user)
+    return render(request, 'sni/profile.html', {'user':user})
+
+'''
 class ProView(TemplateView):
     template_name = "sni/profile.html"
     model = UserProfile
     
-    def get_context_data(self, request, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super(ProView, self).get_context_data(**kwargs)
-        context["first_name"] = UserProfile.objects.get(pk=request.user.id)
+        context["first_name"] = get_object_or_404(UserProfile, pk=user)
         context["last_name"] = 'last_name'
         return context
-
+'''
 class ProfileView(DetailView):
     model = UserProfile

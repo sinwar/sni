@@ -21,8 +21,8 @@ class SignupView(account.views.SignupView):
         self.update_profile(form)
         super(SignupView, self).after_signup(form)
 
-def ProView(request, user):
-    user = UserProfile.objects.get(user = user)
+def ProView(request, pk):
+    user = get_object_or_404(UserProfile, user__pk=pk)
     return render(request, 'sni/profile.html', {'user':user})
 
 '''

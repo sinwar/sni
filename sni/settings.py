@@ -30,6 +30,7 @@ TIME_ZONE = "UTC"
 LANGUAGE_CODE = "en-us"
 
 SITE_ID = int(os.environ.get("SITE_ID", 1))
+SITE_NAME = 'SNI'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -84,7 +85,7 @@ TEMPLATES = [
         ],
         "APP_DIRS": True,
         "OPTIONS": {
-            "debug": DEBUG,
+            "debug": True,
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
                 "django.template.context_processors.debug",
@@ -184,3 +185,4 @@ ACCOUNT_USE_AUTH_AUTHENTICATE = True
 AUTHENTICATION_BACKENDS = [
     "account.auth_backends.UsernameAuthenticationBackend",
 ]
+

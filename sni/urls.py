@@ -13,7 +13,7 @@ urlpatterns = [
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/pro/(?P<pk>[a-zA-Z0-9_-]+)/$",ProView, name = "account_pro"),
     url(r"^account/profile/(?P<pk>\d+)/$",ProfileView.as_view(), name = "account_profile"),
-    url(r"^account/signup/$", SignupView.as_view(), name = "account_signup"),
+    url(r"^account/signup/", SignupView.as_view(), name = "account_signup"),
     url(r"^account/", include("account.urls")),
 ]
 

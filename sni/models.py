@@ -7,4 +7,4 @@ class UserProfile(models.Model):
     last_name = models.TextField(default=" ")
 
     def __str__(self):
-    	return "{0}-{1}".format(self.first_name, self.last_name)
+    	return "{0}".format(self.user)

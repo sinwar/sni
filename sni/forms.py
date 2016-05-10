@@ -8,3 +8,4 @@ class SignupForm(account.forms.SignupForm):
 
     first_name = forms.CharField()
     last_name = forms.CharField()
+    image = forms.ImageField(label = 'Upload image', required = True)

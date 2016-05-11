@@ -15,6 +15,7 @@ class SignupView(account.views.SignupView):
             user = self.created_user,
             first_name = form.cleaned_data["first_name"],
             last_name = form.cleaned_data["last_name"],
+            image = form.cleaned_data["image"],
             )
 
     def after_signup(self, form):

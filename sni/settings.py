@@ -112,6 +112,7 @@ MIDDLEWARE_CLASSES = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+#just for continous strik on github
 ROOT_URLCONF = "sni.urls"
 
 # Python dotted path to the WSGI application used by Django's runserver.

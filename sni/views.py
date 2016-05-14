@@ -24,7 +24,14 @@ class SignupView(account.views.SignupView):
 
 def ProView(request, pk):
     user = get_object_or_404(UserProfile, user__pk=pk)
-    return render(request, 'sni/profile.html', {'user':user})
+    path = ""
+    for i in reversed(user.image.url):
+        if i == '/':
+            break
+        else:
+            path = i+path;
+    var = "{0}{1}".format(settings.MEDIA_URL, path)
+    return render(request, 'sni/profile.html', {'user':user, 'var':var})
 
 '''
 class ProView(TemplateView):

@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load bootstrap %}
 
-{% block head_title %}{% trans "Sign up" %}{% endblock %}
+{% block head_title %}{% trans "Add Item" %}{% endblock %}
 
 
 {% block body %}
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12" align="center">
             <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-                <legend>{% trans "Sign up" %}</legend>
+                <legend>{% trans "ADD ITEM" %}</legend>
 
                 <!--csrf token provided-->
                 {% csrf_token %}
@@ -22,7 +22,7 @@
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button type="submit" class="btn btn-primary">{% trans "ADD ITEM" %}</button>
+                <button type="submit" class="btn btn-primary">{% trans "ADD" %}</button>
             </form>
         </div>
     </div>

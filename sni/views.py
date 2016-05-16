@@ -3,7 +3,7 @@ from django.shortcuts import redirect, get_object_or_404, render_to_response, re
 from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import FormView
 import account.views
-from .forms import SignupForm, AddThing
+from .forms import SignupForm, AddThingForm
 from .models import UserProfile
 from account.conf import settings
 
@@ -50,6 +50,11 @@ class ProfileView(DetailView):
 
 class itemview(FormView):
     template_name = "sni/item.html"
-    form_class = AddThing
+    form_class = AddThingForm
     identifier_field = "itemname"
-    #later work will be done by tmrw
+    form_kwargs = {}
+    success_url = '/added/'#bug
+
+    def form_valid(self, form):
+       return super(itemview, self).form_valid(form)
+    

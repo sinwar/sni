@@ -1,8 +1,9 @@
 from django.http import Http404, HttpResponseForbidden, HttpRequest, HttpResponse
 from django.shortcuts import redirect, get_object_or_404, render_to_response, render
 from django.views.generic import TemplateView, DetailView
+from django.views.generic.edit import FormView
 import account.views
-from .forms import SignupForm
+from .forms import SignupForm, AddThing
 from .models import UserProfile
 from account.conf import settings
 
@@ -46,3 +47,9 @@ class ProView(TemplateView):
 '''
 class ProfileView(DetailView):
     model = UserProfile
+
+class itemview(FormView):
+    template_name = "sni/item.html"
+    form_class = AddThing
+    identifier_field = "itemname"
+    #later work will be done by tmrw

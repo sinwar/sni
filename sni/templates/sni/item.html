@@ -11,7 +11,7 @@
 <!-- Design required here-->
     <div class="row">
         <div class="col-md-12" align="center">
-            <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            <form id="add_item_form" method="post" action="{% url "added" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                 <legend>{% trans "ADD ITEM" %}</legend>
 
                 <!--csrf token provided-->
@@ -19,9 +19,7 @@
 
                 <!--Django bootstrap form-->
                 {{ form|bootstrap }}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
+
                 <button type="submit" class="btn btn-primary">{% trans "ADD" %}</button>
             </form>
         </div>

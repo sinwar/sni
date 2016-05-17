@@ -24,15 +24,16 @@
                 </div>
             </div>
             <div class="row" style="margin-top:5%;">
-            {% for i in  things %}
+            {% for i,j in  things %}
                 <div class="col-md-3">
                     <div class="card" style="border-style: dotted;border-width: 2px;border-color:#00ccff;">
-                        <img class="card-img-top" src="{{}}" alt="Card image cap" height="200px" style="width:100%;">
+                        <img class="card-img-top" src="{{ j }}" alt="Card image cap" height="200px" style="width:100%;">
                         <div class="card-block">
                             <div class="card-text">
                                 <h4 style="float:left;margin-left:2%;">{{ i.itemname }}</h4>
                                 <h4 style="float:right;margin-right:2%;">{{ i.rate }}&#8377</h4>
                             </div>
+
                             <a href="#" class="btn btn-primary" style="width:100%;">Buy</a>
                         </div>
                     </div>

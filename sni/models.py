@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     	return "{0}".format(self.user)
 
 class addThing(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key = True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, primary_key = True)
     itemname = models.CharField(default=" ", max_length=30)
     details = models.TextField(default=" ")
     rate = models.IntegerField(default=" ")

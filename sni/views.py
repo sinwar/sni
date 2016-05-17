@@ -92,13 +92,14 @@ class addThingCreate(CreateView):
 # view for show allthing on homepage in chronological order
 def homeView(request):
     things = addThing.objects.all().order_by("-datetime")
-    path=""
     list=[]
     for i in things:
+        path=""
         for j in reversed(i.itemimage.url):
-            if i == '/':
+            if j == '/':
                 break
             else:
                 path = j+path
         list.append("{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path))
-    return render(request, 'homepage.html',{'things':things, 'list':list})
+    things=zip(things, list)
+    return render(request, 'homepage.html',{'things':things})

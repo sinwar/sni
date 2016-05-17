@@ -5,11 +5,11 @@ from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 
-from .views import SignupView, ProfileView, ProView, addThingCreate
+from .views import SignupView, ProfileView, ProView, addThingCreate, homeView
 
 
 urlpatterns = [
-    url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
+    url(r"^$", homeView, name="home"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^addthing/$",addThingCreate.as_view(), name="add_item"),
     url(r"^addthing/added/$",TemplateView.as_view(template_name = "sni/added.html"), name="added"),

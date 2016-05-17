@@ -33,6 +33,7 @@ from .forms import SignupForm, addThingForm
 from .models import UserProfile, addThing
 from account.conf import settings
 
+# signup view overwrided
 class SignupView(account.views.SignupView):
 
     form_class = SignupForm
@@ -49,6 +50,7 @@ class SignupView(account.views.SignupView):
         self.update_profile(form)
         super(SignupView, self).after_signup(form)
 
+# profile view
 def ProView(request, pk):
     user = get_object_or_404(UserProfile, user__pk=pk)
     path = ""
@@ -56,7 +58,7 @@ def ProView(request, pk):
         if i == '/':
             break
         else:
-            path = i+path;
+            path = i+path
     var = "{0}{1}".format(settings.MEDIA_URL, path)
     return render(request, 'sni/profile.html', {'user':user, 'var':var})
 
@@ -71,15 +73,32 @@ class ProView(TemplateView):
         context["last_name"] = 'last_name'
         return context
 '''
+# profile detail view
 class ProfileView(DetailView):
     model = UserProfile
 
+# createview for add item
 class addThingCreate(CreateView):
     template_name = "sni/addThing_create_form.html"
     form_class = addThingForm
     success_url = '/addthing/added/'
     model = addThing
-
+    # adding current user using validation
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(addThingCreate, self).form_valid(form)
+
+
+# view for show allthing on homepage in chronological order
+def homeView(request):
+    things = addThing.objects.all().order_by("-datetime")
+    path=""
+    list=[]
+    for i in things:
+        for j in reversed(i.itemimage.url):
+            if i == '/':
+                break
+            else:
+                path = j+path
+        list.append("{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path))
+    return render(request, 'homepage.html',{'things':things, 'list':list})

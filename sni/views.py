@@ -27,10 +27,10 @@ from account.utils import default_redirect, get_form_data
 from django.http import Http404, HttpResponseForbidden, HttpRequest, HttpResponse
 from django.shortcuts import redirect, get_object_or_404, render_to_response, render
 from django.views.generic import TemplateView, DetailView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView
 import account.views
 from .forms import SignupForm, addThingForm
-from .models import UserProfile
+from .models import UserProfile, addThing
 from account.conf import settings
 
 class SignupView(account.views.SignupView):
@@ -74,11 +74,12 @@ class ProView(TemplateView):
 class ProfileView(DetailView):
     model = UserProfile
 
-class itemview(FormView):
-    template_name = "sni/item.html"
+class addThingCreate(CreateView):
+    template_name = "sni/addThing_create_form.html"
     form_class = addThingForm
-    identifier_field = "itemname"
-    form_kwargs = {}
-    success_url = '/addthing/added/'#bug
+    success_url = '/addthing/added/'
+    model = addThing
 
-    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(addThingCreate, self).form_valid(form)

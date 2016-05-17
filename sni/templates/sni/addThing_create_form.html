@@ -11,7 +11,7 @@
 <!-- Design required here-->
     <div class="row">
         <div class="col-md-12" align="center">
-            <form id="add_item_form" method="post" action="{% url "added" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            <form id="add_item_form" method="post" action="{% url "add_item" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                 <legend>{% trans "ADD ITEM" %}</legend>
 
                 <!--csrf token provided-->

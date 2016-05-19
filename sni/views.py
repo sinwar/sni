@@ -85,7 +85,7 @@ class addThingCreate(CreateView):
     model = addThing
     # adding current user using validation
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.owner = self.request.user
         return super(addThingCreate, self).form_valid(form)
 
 

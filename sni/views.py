@@ -103,3 +103,12 @@ def homeView(request):
         list.append("{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path))
     things=zip(things, list)
     return render(request, 'homepage.html',{'things':things})
+
+
+
+
+def buyitemview(request, user, item):
+    thing = addThing.objects.get(owner = user, itemname = item)
+    profile = UserProfile.objects.get(user = user)
+    
+    return render(request, 'buyitem.html',{'thing':thing, 'profile':profile})

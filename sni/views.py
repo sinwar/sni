@@ -107,8 +107,14 @@ def homeView(request):
 
 
 
-def buyitemview(request, user, item):
-    thing = addThing.objects.get(owner = user, itemname = item)
-    profile = UserProfile.objects.get(user = user)
-    
-    return render(request, 'buyitem.html',{'thing':thing, 'profile':profile})
+def buyitemview(request, item_id):
+    thing = addThing.objects.get(pk = item_id)
+    profile = UserProfile.objects.get(user = thing.owner)
+    path = ""
+    for i in reversed(thing.itemimage.url):
+        if i == '/':
+            break
+        else:
+            path = i + path
+    path = "{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path)
+    return render(request, 'sni/buyitem.html',{'thing':thing, 'profile':profile, 'path':path})

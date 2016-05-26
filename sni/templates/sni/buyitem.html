@@ -13,23 +13,26 @@
             <h3>Item details and contact</h3>
         </div>
         <div class="col-md-6">
-            <img src="" class="img-responsive">
+            <img src="{{ path }}" class="img-responsive">
         </div>
         <div class="col-md-6">
             <li>
-                ITEM NAME - CALC
+                ITEM NAME - {{ thing.itemname }}
             </li>
             <li>
-                RATE - 2000
+                RATE - {{ thing.rate }}
             </li>
             <li>
-                OWNER'S USERNAME - SINWAR
+                ITEM DETAIL - {{ thing.details }}
             </li>
             <li>
-                OWNER'S FIRST NAME - PREM
+                OWNER'S USERNAME - {{ profile.user }}
             </li>
             <li>
-                OWNER'S LAST NAME - SINWAR
+                OWNER'S FIRST NAME - {{ profile.first_name }}
+            </li>
+            <li>
+                OWNER'S LAST NAME - {{ profile.last_name }}
             </li>
             <li>
                 MOBILE NUMBER - 9783856766

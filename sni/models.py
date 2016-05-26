@@ -13,7 +13,7 @@ class UserProfile(models.Model):
 
 
 class addThing(models.Model):
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, blank =True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, blank =True, related_name = 'owneruser')
     itemname = models.CharField(default=" ", max_length=30)
     details = models.TextField(default=" ")
     rate = models.IntegerField(default=" ")

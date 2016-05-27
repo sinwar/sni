@@ -13,6 +13,15 @@
             {% if not user.is_authenticated %}
             {% url "account_login" as login_url %}
             {% url "account_signup" as signup_url %}
+
+            <div class="container">
+                <h2 class="text-center">{% blocktrans %}What is SNI?{% endblocktrans %}</h2>
+                <p class="lead">
+                    {% blocktrans %}
+                    <b>SNI</b> is django reusuable app for buy/sell for univercities. It can be intranet or internet.
+                    {% endblocktrans %}
+                </p>
+            </div>
             <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
             {% else %}
             <div class="row">
@@ -25,7 +34,7 @@
             </div>
             <div class="row" style="margin-top:5%;">
             {% for i,j in  things %}
-                <div class="col-md-3">
+                <div class="col-md-3" style="padding-top: 5%;">
                     <div class="card" style="border-style: dotted;border-width: 2px;border-color:#00ccff;">
                         <img class="card-img-top" src="{{ j }}" alt="Card image cap" height="200px" style="width:100%;">
                         <div class="card-block">
@@ -41,16 +50,6 @@
             {% endfor %}
             </div>
             {% endif %}
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <h2 class="text-center">{% blocktrans %}What is SNI?{% endblocktrans %}</h2>
-            <p class="lead">
-                {% blocktrans %}
-                <b>SNI</b> is django reusuable app for buy/sell for univercities. It can be intranet or internet.
-                {% endblocktrans %}
-            </p>
         </div>
     </section>
 {% endblock %}

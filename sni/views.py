@@ -45,7 +45,8 @@ class SignupView(account.views.SignupView):
             last_name = form.cleaned_data["last_name"],
             image = form.cleaned_data["image"],
             mobile = form.cleaned_data["mobile"],
-            facebook = form.cleaned_data["facebook"]
+            facebook = form.cleaned_data["facebook"],
+            address = form.cleaned_data["address"]
             )
 
     def after_signup(self, form):

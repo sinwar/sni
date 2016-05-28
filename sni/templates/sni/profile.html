@@ -3,15 +3,22 @@
 {% load i18n %}
 
 {% block body %}
-	<div class="row"  style="margin-top: 20%;">
+	<div class="row">
+		<div class="col-md-12" style="text-align: center">
+            <h2 style="color: #00ccff;text-decoration: underline;">
+                PROFILE
+            </h2>
+        </div>
+    </div>
+    <div  class="row" style="padding-top: 4%;">
 		<div class="col-md-6">
-			<img src="{{ var }}" height="100px" width="100px">
+			<img src="{{ var }}" height="400px" width="400px">
 		</div>
-		<div class="col-md-6">
-			<h4>{% trans "username" %} - {{ user }}</h4>
-			<h4>{% trans "first_name" %} - {{ user.first_name }} </h4>
-			<h4>{% trans "last_name" %} - {{ user.last_name }}</h4>
-			
+		<div class="col-md-6" style="text-align: center; text-transform: capitalize">
+			<h4 class="nameprofile">{% trans "username" %} - {{ user }}</h4>
+			<h4 class="nameprofile">{% trans "first name" %} - {{ user.first_name }} </h4>
+			<h4 class="nameprofile ">{% trans "last name" %} - {{ user.last_name }}</h4>
 		</div>
-	</div>
+    </div>
+
 {% endblock %}

@@ -27,6 +27,16 @@ class SignupForm(account.forms.SignupForm):
         required = True
     )
 
+    mobile = forms.IntegerField(
+        label = _("mobile number"),
+        required = True
+    )
+
+    facebook = forms.URLField(
+        label = _("facebook profile"),
+        required = True
+    )
+
 
 class addThingForm(ModelForm):
 

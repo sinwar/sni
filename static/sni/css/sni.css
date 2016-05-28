@@ -1,0 +1,33 @@
+.homesni {
+    padding-top: 10%;
+}
+
+.homesni h2{
+    font-weight: bold;
+    color: #00ccff;
+    font-size: 100px;
+    text-decoration: underline;
+}
+.loginhome{
+    text-align: center;
+    padding-top: 5%;
+}
+
+.search input{
+    width: 100%;
+    padding: 12px 20px;
+    margin-left:4%;
+    margin-right: 4%;
+    box-sizing: border-box;
+}
+
+
+.addbutton a{
+    color: #00ccff;
+    border: white solid 2px;
+    padding: 15%;
+}
+
+.nameprofile{
+    padding-top: 4%;
+}

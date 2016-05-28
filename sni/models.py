@@ -5,9 +5,12 @@ import datetime
 
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, primary_key = True)
-    first_name = models.TextField(default=" ")
-    last_name = models.TextField(default=" ")
-    image = models.ImageField(default=" ", upload_to = settings.MEDIA_ROOT)
+    first_name = models.TextField(default = " ")
+    last_name = models.TextField(default = " ")
+    image = models.ImageField(default = " ", upload_to = settings.MEDIA_ROOT)
+    mobile = models.IntegerField(default = 01234)
+    address = models.TextField(default = " ")
+    facebook = models.TextField(default = " ")
     def __str__(self):
     	return "{0}".format(self.user)
 

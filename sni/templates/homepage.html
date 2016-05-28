@@ -15,21 +15,34 @@
             {% url "account_signup" as signup_url %}
 
             <div class="container homesni">
-                <h2 class="text-center">{% blocktrans %}What is SNI?{% endblocktrans %}</h2>
+                <h2 class="text-center">{% blocktrans %}SNI{% endblocktrans %}</h2>
                 <p class="lead">
                     {% blocktrans %}
-                    <b>SNI</b> is django reusuable app for buy/sell for univercities. It can be intranet or internet.
+                    <b>SNI</b> is django reusuable app for buy/sell for univercities. Just either add your thing or buy whatever you want.
                     {% endblocktrans %}
                 </p>
             </div>
-            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 loginhome">
+                    <p>
+                        {% blocktrans %}
+                            Already have account <a href="{{ login_url }}" class="btn btn-default">Log In</a>
+                        {% endblocktrans %}
+                    </p> <br>
+                    <p>
+                        {% blocktrans %}
+                            New here <a href="{{ signup_url }}" class="btn" style="background-color: #00ccff; color: white">Sign Up</a>
+                        {% endblocktrans %}
+                    </p>
+                </div>
+            </div>
             {% else %}
             <div class="row">
-                <div class="col-md-8">
-                    <input type="text" placeholder="What are you looking for..." style="width: 100%; padding: 12px 20px; margin: 8px 0;  box-sizing: border-box;">
+                <div class="col-md-8 search">
+                    <input type="text" placeholder="What are you looking for..." >
                 </div>
-                <div class="col-md-4">
-                    <a href="{%url 'add_item' %}"><i class="fa fa-plus fa-2x" style=" padding: 12px 20px; margin: 8px 0;"> ADD</i></a>
+                <div class="col-md-3 col-md-offset-1 addbutton">
+                    <a href="{%url 'add_item' %}" class="button btn-lg active"><i class="fa fa-plus fa-2x" > ADD</i></a>
                 </div>
             </div>
             <div class="row" style="margin-top:5%;">
@@ -43,7 +56,7 @@
                                 <h4 style="float:right;margin-right:2%;">{{ i.rate }}&#8377</h4>
                             </div>
 
-                            <a href="{%url 'buyitem' item_id=i.id %}" class="btn btn-primary" style="width:100%;">Buy</a>
+                            <a href="{%url 'buyitem' item_id=i.id %}" class="btn" style="width:100%; background-color: #00ccff; color: white; font-weight: bold">Buy</a>
                         </div>
                     </div>
                 </div>

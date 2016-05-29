@@ -33,6 +33,9 @@ from .forms import SignupForm, addThingForm
 from .models import UserProfile, addThing
 from account.conf import settings
 
+from django.contrib.auth.decorators import login_required
+
+
 # signup view overwrided
 class SignupView(account.views.SignupView):
 
@@ -53,6 +56,7 @@ class SignupView(account.views.SignupView):
         self.update_profile(form)
         super(SignupView, self).after_signup(form)
 
+@login_required
 # profile view
 def ProView(request, pk):
     user = get_object_or_404(UserProfile, user__pk=pk)
@@ -63,7 +67,9 @@ def ProView(request, pk):
         else:
             path = i+path
     var = "{0}{1}".format(settings.MEDIA_URL, path)
-    return render(request, 'sni/profile.html', {'user':user, 'var':var})
+    things = addThing.objects.filter(owner = pk)
+    cout = len(things)
+    return render(request, 'sni/profile.html', {'user':user, 'var':var, 'things':things, 'cout':cout})
 
 '''
 class ProView(TemplateView):
@@ -109,7 +115,7 @@ def homeView(request):
 
 
 
-
+@login_required
 def buyitemview(request, item_id):
     thing = addThing.objects.get(pk = item_id)
     profile = UserProfile.objects.get(user = thing.owner)
@@ -121,3 +127,9 @@ def buyitemview(request, item_id):
             path = i + path
     path = "{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path)
     return render(request, 'sni/buyitem.html',{'thing':thing, 'profile':profile, 'path':path})
+
+@login_required
+def removeitem(request, pk):
+    item = get_object_or_404(addThing, pk = pk)
+    item.delete()
+    return redirect('sni.views.homeView')

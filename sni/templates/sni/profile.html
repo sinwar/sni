@@ -18,7 +18,45 @@
 			<h4 class="nameprofile">{% trans "username" %} - {{ user }}</h4>
 			<h4 class="nameprofile">{% trans "first name" %} - {{ user.first_name }} </h4>
 			<h4 class="nameprofile ">{% trans "last name" %} - {{ user.last_name }}</h4>
+            <h4 class="nameprofile ">{% trans "mobile number" %} - {{ user.mobile }}</h4>
+            <h4 class="nameprofile ">{% trans "facebook url" %} -<a href="{{ user.facebook }}" target="_blank"> Click here</a></h4>
 		</div>
     </div>
 
+	<div class="row">
+		<div class="col-md-12" style="text-align: center; margin-top: 5%">
+            <h4 style="color: #00ccff;text-decoration: underline;">
+                THINGS ADDED BY {{ user }}
+            </h4>
+        </div>
+    </div>
+    {% if cout == 0 %}
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <h3>You've not added anything till now.</h3>
+            </div>
+        </div>
+    {% else %}
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Rate</th>
+                <th>Date, Time added </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in things %}
+                {% if request.user == i.owner %}
+                    <tr>
+                        <td> {{ i }}</td>
+                        <td> {{ i.rate }} &#8377</td>
+                        <td> {{ i.datetime }} </td>
+                        <td><a href="{%url 'removeitem' pk=i.pk %}" class="btn btn-default">REMOVE</a></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

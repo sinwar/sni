@@ -60,9 +60,9 @@ class SignupForm(account.forms.SignupForm):
 
     # validator for mobile number
     def clean_mobile(self):
-        mobile = sel.cleaned_data["mobile"]
+        mobile = self.cleaned_data["mobile"]
 
-        if mobile.length != 10:
+        if len(str(mobile)) != 10:
             raise forms.ValidationError(_("Please Enter your 10 digit mobile number"))
 
         return mobile
@@ -79,6 +79,6 @@ class addThingForm(ModelForm):
     # clean method for itemname
     def clean_itemname(self):
         itemname = self.cleaned_data["itemname"]
-        if not alnum_re.search(first_name):
+        if not alnum_re.search(itemname):
             raise forms.ValidationError(_("Item name can only contain letters, numbers and underscores."))
-        return first_name
+        return itemname

@@ -30,7 +30,7 @@ from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import FormView, CreateView
 import account.views
 from .forms import SignupForm, addThingForm
-from .models import UserProfile, addThing
+from .models import UserProfile, addThing, newnotice
 from account.conf import settings
 
 from django.contrib.auth.decorators import login_required
@@ -134,3 +134,16 @@ def removeitem(request, pk):
     item = get_object_or_404(addThing, pk = pk)
     item.delete()
     return redirect('sni.views.homeView')
+
+
+# view for generate new notice to owner
+@login_required
+def noticegenerate(request, pk, pk1):
+    # receiver is the owner of the thing so pk relate to reciever
+    receiverobject = get_object_or_404(UserProfile, pk = pk)
+    receiver = receiverobject.user
+    # pk1 relate to the item
+    item = get_object_or_404(addThing, pk = pk1)
+    message = "{0} wants to buy {1} added by you".format(request.user, item)
+    newnotice.objects.create(sender=request.user,receiver=receiver, message=message)
+    return redirect('sni.views.buyitemview', item_id = pk1)

@@ -4,6 +4,9 @@ import datetime
 
 
 class UserProfile(models.Model):
+    """
+    model for storing user information for authenticated user
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, primary_key = True)
     first_name = models.TextField(default = " ")
     last_name = models.TextField(default = " ")
@@ -16,6 +19,9 @@ class UserProfile(models.Model):
 
 
 class addThing(models.Model):
+    """
+    model for storing items added by user
+    """
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, blank =True, related_name = 'owneruser')
     itemname = models.CharField(default=" ", max_length=30)
     details = models.TextField(default=" ")
@@ -24,3 +30,16 @@ class addThing(models.Model):
     datetime = models.DateTimeField(default=datetime.datetime.now())
     def __str__(self):
         return "{0}".format(self.itemname)
+
+
+
+class newnotice(models.Model):
+    """
+    model for send notification for buy the thing
+    """
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, blank =True, related_name = 'noticesender')
+    receiver = models.CharField(default=" ", max_length = 30)
+    message = models.TextField(default=" ")
+
+    def __str__(self):
+        return "{0}-{1}".format(self.sender, self.message)

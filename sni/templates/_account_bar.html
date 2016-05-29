@@ -4,6 +4,12 @@
 
 <ul class="nav navbar-nav pull-right">
     {% if request.user.is_authenticated %}
+        <li>
+            <a href="/" id="account_notification" ><i class="fa fa-bell"></i> 1</a>
+        </li>
+        <li>
+            <a href="/" id="account_chat" ><i class="fa fa-comments"></i> 1</a>
+        </li>
         <a href="{% url 'account_pro' pk=user.pk %}">
             <p class="navbar-text">
                 <i class="fa fa-user"></i> {% user_display request.user %}

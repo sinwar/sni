@@ -6,44 +6,52 @@
 
 {% block head_title %}{% trans "Buy" %}{% endblock %}
 
-
+<!-- templste for buy item view -->
 {% block body %}
     <div class="row">
         <div class="col-md-12" style="text-align: center; font-weight: bold; text-transform: uppercase; text-decoration: underline; margin-bottom: 4%; color: #00ccff">
             <h3>Item details and contact</h3>
         </div>
+        <!-- Path variable from view -->
         <div class="col-md-8">
             <img src="{{ path }}" class="img-responsive" style="height: 600px;">
         </div>
+
+        <!-- thing and profile view from view -->
         <div class="col-md-4" style="text-align: center">
             <h1 style="text-transform: uppercase; color: #00ccff">{{ thing.itemname }}</h1>
-            <div class="info">
-
-            </div>
-            <li>
-                ITEM NAME - {{ thing.itemname }}
-            </li>
-            <li>
-                RATE - {{ thing.rate }}
-            </li>
-            <li>
-                ITEM DETAIL - {{ thing.details }}
-            </li>
-            <li>
-                OWNER'S USERNAME - {{ profile.user }}
-            </li>
-            <li>
-                OWNER'S FIRST NAME - {{ profile.first_name }}
-            </li>
-            <li>
-                OWNER'S LAST NAME - {{ profile.last_name }}
-            </li>
-            <li>
-                MOBILE NUMBER - {{ profile.mobile }}
-            </li>
-            <li>
-                FACEBOOK ACCOUNT URL - <a href="{{ profile.facebook }}"> {{ profile.facebook }}</a>
-            </li>
+            <h4 class="nameprofile">
+                {% trans "Item Name" %} - {{ thing.itemname }}
+            </h4>
+            <h4 class="nameprofile">
+                {% trans "Rate" %} - {{ thing.rate}}
+            </h4>
+            <h4 class="nameprofile">
+                {% trans "Item Detail" %}- {{ thing.details}}
+            </h4>
+            <h4 class="nameprofile">
+                {% trans "Owner's username" %} - {{ profile.user }}
+            </h4>
+            <h4 class="nameprofile">
+                 {% trans "Owner's first name" %} - {{ profile.first_name}}
+            </h4>
+            <h4 class="nameprofile">
+                {% trans "Owner's last name" %} - {{ profile.last_name }}
+            </h4>
+            <h4 class="nameprofile">
+                {% trans "Mobile Number" %}-{{ profile.mobile }}
+            </h4>
+            <h4 class="nameprofile">
+                {% trans "facebook profile"%} -<a href="{{ profile.facebook }}"> {{ profile.facebook }}</a>
+            </h4>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+        <div class="col-md-4 col-md-offset-4">
+            <a href="#" class="btn btn-info btn-lg"> Message Owner </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#" class="btn btn-info btn-lg"> Buy Request </a>
         </div>
     </div>
 

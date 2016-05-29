@@ -114,7 +114,7 @@ def homeView(request):
     return render(request, 'homepage.html',{'things':things})
 
 
-
+# view for item details or buyitem
 @login_required
 def buyitemview(request, item_id):
     thing = addThing.objects.get(pk = item_id)
@@ -128,6 +128,7 @@ def buyitemview(request, item_id):
     path = "{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path)
     return render(request, 'sni/buyitem.html',{'thing':thing, 'profile':profile, 'path':path})
 
+# view for remove item
 @login_required
 def removeitem(request, pk):
     item = get_object_or_404(addThing, pk = pk)

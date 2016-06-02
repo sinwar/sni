@@ -31,3 +31,10 @@
 .nameprofile{
     padding-top: 6%;
 }
+
+.notifications{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 2%;
+    border: black solid 1px;
+}

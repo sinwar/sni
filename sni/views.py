@@ -147,3 +147,9 @@ def noticegenerate(request, pk, pk1):
     message = "{0} wants to buy {1} added by you".format(request.user, item)
     newnotice.objects.create(sender=request.user,receiver=receiver, message=message)
     return redirect('sni.views.buyitemview', item_id = pk1)
+
+# view for all the notification of user
+@login_required
+def notifications(request):
+    notifications = newnotice.objects.filter(receiver=request.user)
+    return render(request, 'sni/notifications.html',{'notifications':notifications})

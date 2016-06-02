@@ -40,6 +40,7 @@ class newnotice(models.Model):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, blank =True, related_name = 'noticesender')
     receiver = models.CharField(default=" ", max_length = 30)
     message = models.TextField(default=" ")
+    type = models.CharField(default=" ", max_length=30)
 
     def __str__(self):
         return "{0}-{1}".format(self.sender, self.message)

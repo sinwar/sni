@@ -34,7 +34,7 @@ from .models import UserProfile, addThing, newnotice
 from account.conf import settings
 
 from django.contrib.auth.decorators import login_required
-
+from django.core.exceptions import ObjectDoesNotExist
 
 # signup view overwrided
 class SignupView(account.views.SignupView):
@@ -136,16 +136,25 @@ def removeitem(request, pk):
     return redirect('sni.views.homeView')
 
 
+# function for generate new notice to owner
+@login_required
+def noticegen(type, sender, receiver, message):
+    notice = newnotice.objects.create(sender=sender, type=type, receiver=receiver, message=message)
+    return notice
+
 # view for generate new notice to owner
 @login_required
-def noticegenerate(request, pk, pk1):
+def noticegenerate(request, type, pk, pk1):
     # receiver is the owner of the thing so pk relate to reciever
     receiverobject = get_object_or_404(UserProfile, pk = pk)
     receiver = receiverobject.user
     # pk1 relate to the item
     item = get_object_or_404(addThing, pk = pk1)
-    message = "{0} wants to buy {1} added by you".format(request.user, item)
-    newnotice.objects.create(sender=request.user,receiver=receiver, message=message)
+    if type == 'request':
+        message = "{0} wants to buy {1} added by you".format(request.user, item)
+    else:
+        message = "Your request for {0} is accepted by {1}".format(item, request.user)
+    newnotice.objects.create(sender=request.user,receiver=receiver, message=message, type=type)
     return redirect('sni.views.buyitemview', item_id = pk1)
 
 # view for all the notification of user
@@ -153,17 +162,26 @@ def noticegenerate(request, pk, pk1):
 def notifications(request):
     notifications = newnotice.objects.filter(receiver=request.user)
     itemlist =[]
+    type = []
     if len(notifications) != 0:
         for i in notifications:
-            k=i.message.split(" ")
+            k = i.message.split(" ")
             item = k[4]
-            itemlist.append(addThing.objects.get(itemname = item))
-    notifications = zip(notifications, itemlist)
+            try:
+                itemlist.append(addThing.objects.get(itemname=item))
+            except ObjectDoesNotExist:
+                pass
+            type.append(i.type)
+    notifications = zip(notifications, itemlist, type)
     lengthnotifications = len(notifications)
+
     return render(request, 'sni/notifications.html',{'notifications':notifications, 'lenghtnotifications':lengthnotifications})
 
 @login_required
 def deletenotification(request, pk):
     notification = get_object_or_404(newnotice, pk=pk)
+    item = notification.message[4]
+    message = "Your request for {0} is declined by {1}".format(item, notification.sender)
+    notice=noticegen(notification.receiver, 'accept', notification.sender, message)
     notification.delete()
     return redirect('sni.views.notifications')

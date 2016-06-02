@@ -51,7 +51,7 @@
             <a href="#" class="btn btn-info btn-lg"> Message Owner </a>
         </div>
         <div class="col-md-4">
-            <a href="{% url 'noticegenerate' pk=profile.pk pk1=thing.pk %}" class="btn btn-info btn-lg"> Buy Request </a>
+            <a href="{% url 'noticegenerate' type='request' pk=profile.pk pk1=thing.pk %}" class="btn btn-info btn-lg"> Buy Request </a>
         </div>
     </div>
 

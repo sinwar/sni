@@ -152,4 +152,18 @@ def noticegenerate(request, pk, pk1):
 @login_required
 def notifications(request):
     notifications = newnotice.objects.filter(receiver=request.user)
-    return render(request, 'sni/notifications.html',{'notifications':notifications})
+    itemlist =[]
+    if len(notifications) != 0:
+        for i in notifications:
+            k=i.message.split(" ")
+            item = k[4]
+            itemlist.append(addThing.objects.get(itemname = item))
+    notifications = zip(notifications, itemlist)
+    lengthnotifications = len(notifications)
+    return render(request, 'sni/notifications.html',{'notifications':notifications, 'lenghtnotifications':lengthnotifications})
+
+@login_required
+def deletenotification(request, pk):
+    notification = get_object_or_404(newnotice, pk=pk)
+    notification.delete()
+    return redirect('sni.views.notifications')

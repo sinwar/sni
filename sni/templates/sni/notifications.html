@@ -4,20 +4,28 @@
 <!--- template for notifications view -->
 {% block body %}
     <div class="row">
+        {% if lenghtnotifications == 0 %}
 
-        {% for i in notifications %}
-            <div class="notifications">
-                <div class="col-md-4">
-                    <h4>{{ i.message }}</h4>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="btn btn-info btn-lg"> ACCEPT </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="btn btn-default btn-lg"> DECLINE </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>You've not any notifications</h4>
                 </div>
             </div>
-        {% endfor %}
 
+        {% else %}
+            {% for i,j in notifications %}
+                <div class="notifications">
+                    <div class="col-md-4">
+                        <h4>{{ i.message }}</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'removeitem' pk=j.pk %}" class="btn btn-info btn-lg"> ACCEPT </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'deletenotification' pk=i.pk %}" class="btn btn-default btn-lg"> DECLINE </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}

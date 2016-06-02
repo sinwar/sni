@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a310c5b5-95ea-44ee-a3da-283dd3c6bfcf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sni/templates/sni/notifications.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sni/templates/_account_bar.html" afterPath="$PROJECT_DIR$/sni/templates/_account_bar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sni/templates/sni/notifications.html" afterPath="$PROJECT_DIR$/sni/templates/sni/notifications.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sni/urls.py" afterPath="$PROJECT_DIR$/sni/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sni/views.py" afterPath="$PROJECT_DIR$/sni/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sni/css/sni.css" afterPath="$PROJECT_DIR$/static/sni/css/sni.css" />
     </list>
     <ignored path="sni.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +30,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sni/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="153" column="53" selection-start-line="153" selection-start-column="53" selection-end-line="153" selection-end-column="53" />
+            <state relative-caret-position="754">
+              <caret line="162" column="104" selection-start-line="162" selection-start-column="85" selection-end-line="162" selection-end-column="104" />
               <folding>
                 <element signature="e#1#40#0" expanded="true" />
               </folding>
@@ -44,8 +42,8 @@
       <file leaf-file-name="notifications.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sni/templates/sni/notifications.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+            <state relative-caret-position="90">
+              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -120,8 +118,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sni/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+            <state relative-caret-position="285">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -171,10 +169,10 @@
         <option value="$PROJECT_DIR$/sni/models.py" />
         <option value="$PROJECT_DIR$/sni/admin.py" />
         <option value="$PROJECT_DIR$/sni/templates/sni/buyitem.html" />
-        <option value="$PROJECT_DIR$/sni/urls.py" />
         <option value="$PROJECT_DIR$/sni/templates/_account_bar.html" />
-        <option value="$PROJECT_DIR$/sni/views.py" />
         <option value="$PROJECT_DIR$/static/sni/css/sni.css" />
+        <option value="$PROJECT_DIR$/sni/urls.py" />
+        <option value="$PROJECT_DIR$/sni/views.py" />
         <option value="$PROJECT_DIR$/sni/templates/sni/notifications.html" />
       </list>
     </option>
@@ -187,9 +185,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -326,8 +324,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -560,7 +558,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18760107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -917,16 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sni/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sni/templates/_account_bar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -941,16 +929,6 @@
           <caret line="40" column="12" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="12" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sni/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="153" column="53" selection-start-line="153" selection-start-column="53" selection-end-line="153" selection-end-column="53" />
-          <folding>
-            <element signature="e#1#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -987,10 +965,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sni/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sni/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="162" column="104" selection-start-line="162" selection-start-column="85" selection-end-line="162" selection-end-column="104" />
+          <folding>
+            <element signature="e#1#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sni/templates/sni/notifications.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        <state relative-caret-position="90">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
           <folding />
         </state>
       </provider>

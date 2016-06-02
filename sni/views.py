@@ -137,10 +137,11 @@ def removeitem(request, pk):
 
 
 # function for generate new notice to owner
-@login_required
+'''
 def noticegen(type, sender, receiver, message):
     notice = newnotice.objects.create(sender=sender, type=type, receiver=receiver, message=message)
     return notice
+'''
 
 # view for generate new notice to owner
 @login_required
@@ -160,28 +161,32 @@ def noticegenerate(request, type, pk, pk1):
 # view for all the notification of user
 @login_required
 def notifications(request):
-    notifications = newnotice.objects.filter(receiver=request.user)
+    notification = newnotice.objects.filter(receiver='sinwar')
     itemlist =[]
-    type = []
-    if len(notifications) != 0:
-        for i in notifications:
+    typ = []
+    if len(notification) != 0:
+        for i in notification:
             k = i.message.split(" ")
-            item = k[4]
-            try:
+            if i.type == 'request':
+                item = k[4]
                 itemlist.append(addThing.objects.get(itemname=item))
-            except ObjectDoesNotExist:
-                pass
-            type.append(i.type)
-    notifications = zip(notifications, itemlist, type)
-    lengthnotifications = len(notifications)
 
-    return render(request, 'sni/notifications.html',{'notifications':notifications, 'lenghtnotifications':lengthnotifications})
+            typ.append(i.type)
+    if len(itemlist) != 0:
+        notification = zip(notification, itemlist, typ)
+    else:
+        notification = zip(notification, typ)
+
+    lengthnotifications = len(notification)
+
+    return render(request, 'sni/notifications.html',{'notification':notification, 'lenghtnotifications':lengthnotifications})
 
 @login_required
 def deletenotification(request, pk):
     notification = get_object_or_404(newnotice, pk=pk)
-    item = notification.message[4]
-    message = "Your request for {0} is declined by {1}".format(item, notification.sender)
-    notice=noticegen(notification.receiver, 'accept', notification.sender, message)
+    item = notification.message.split(" ")
+    message = "Your request for {0} is declined by {1}".format(item[4], notification.receiver)
+    if notification.type == 'request':
+        newnotice.objects.create(sender=request.user, type='decline', receiver=notification.sender, message=message)
     notification.delete()
     return redirect('sni.views.notifications')

@@ -139,9 +139,9 @@ def removeitem(request, pk):
 # function for generate new notice to owner
 '''
 def noticegen(type, sender, receiver, message):
-    notice = newnotice.objects.create(sender=sender, type=type, receiver=receiver, message=message)
-    return notice
-'''
+    notice = newnotice.objects.create(sender=sender, type=type, receiver=receiver, message=message) return notice '''
+
+
 
 # view for generate new notice to owner
 @login_required
@@ -161,7 +161,7 @@ def noticegenerate(request, type, pk, pk1):
 # view for all the notification of user
 @login_required
 def notifications(request):
-    notification = newnotice.objects.filter(receiver='sinwar')
+    notification = newnotice.objects.filter(receiver=request.user)
     itemlist =[]
     typ = []
     if len(notification) != 0:
@@ -169,8 +169,10 @@ def notifications(request):
             k = i.message.split(" ")
             if i.type == 'request':
                 item = k[4]
-                itemlist.append(addThing.objects.get(itemname=item))
-
+                try:
+                    itemlist.append(addThing.objects.get(itemname=item))
+                except ObjectDoesNotExist:
+                    pass
             typ.append(i.type)
     if len(itemlist) != 0:
         notification = zip(notification, itemlist, typ)
@@ -190,3 +192,15 @@ def deletenotification(request, pk):
         newnotice.objects.create(sender=request.user, type='decline', receiver=notification.sender, message=message)
     notification.delete()
     return redirect('sni.views.notifications')
+
+
+@login_required
+def removeitemonaccept(request, pk, pk1):
+    item = get_object_or_404(addThing, pk = pk)
+    notification = get_object_or_404(newnotice, pk=pk1)
+    message = "Your request for {0} is accepted by {1}".format(item, notification.receiver)
+    newnotice.objects.create(sender=request.user, type='accept', receiver=notification.sender, message=message)
+    notification.delete()
+    item.delete()
+    return redirect('sni.views.notifications')
+

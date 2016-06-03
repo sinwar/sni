@@ -2,6 +2,7 @@
 {% load bootstrap %}
 {% load i18n %}
 <!--- template for notifications view -->
+<h2> {{ notification }} </h2>
 {% block body %}
     <div class="row">
         {% if lenghtnotifications == 0 %}
@@ -20,12 +21,16 @@
                     </div>
                     {% ifequal k "request" %}
                         <div class="col-md-4">
-                            <a href="{% url 'removeitem' pk=j.pk %}" class="btn btn-info btn-lg"> ACCEPT </a>
+                            <a href="{% url 'removeitemonaccept' pk=j.pk pk1=i.pk %}" class="btn btn-info btn-lg"> ACCEPT </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'deletenotification' pk=i.pk %}" class="btn btn-default btn-lg"> DECLINE </a>
+                        </div>
+                    {% else %}
+                        <div class="col-md-4 col-md-offset-4">
+                            <a href="{% url 'deletenotification' pk=i.pk %}" class="btn btn-default btn-lg"> DELETE </a>
                         </div>
                     {% endifequal %}
-                    <div class="col-md-4">
-                            <a href="{% url 'deletenotification' pk=i.pk %}" class="btn btn-default btn-lg"> DECLINE </a>
-                    </div>
 
                 </div>
             {% endfor %}

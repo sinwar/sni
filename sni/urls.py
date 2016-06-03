@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 
 
-from .views import SignupView, ProfileView, ProView, addThingCreate, homeView, buyitemview, removeitem, noticegenerate, notifications, deletenotification
+from .views import SignupView, ProfileView, ProView, addThingCreate, homeView, buyitemview, removeitem, noticegenerate, notifications, deletenotification, removeitemonaccept
 
 
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
     url(r"^addthing/added/$",TemplateView.as_view(template_name = "sni/added.html"), name="added"),
     url(r"^buyitem/(?P<item_id>\d+)/$", buyitemview, name="buyitem"),
     url(r"^deleteitem/(?P<pk>\d+)/$", removeitem, name="removeitem"),
+    url(r"^removeitemonaccept/(?P<pk>\d+)/(?P<pk1>\d+)/$", removeitemonaccept, name="removeitemonaccept"),
     url(r"^deletenotification/(?P<pk>\d+)/$", deletenotification, name="deletenotification"),
     url(r"^newnotice/(?P<type>[a-zA-Z]+)/(?P<pk>\d+)/(?P<pk1>\d+)/$",noticegenerate, name="noticegenerate"),
     url(r"^notifications/", notifications, name="notifications"),

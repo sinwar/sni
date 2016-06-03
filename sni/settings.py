@@ -6,7 +6,7 @@ PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
 DEBUG = True
-'''
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -18,6 +18,7 @@ import dj_database_url
 DATABASES = {
     "default": dj_database_url.config()
 }
+'''
 
 ALLOWED_HOSTS = []
 

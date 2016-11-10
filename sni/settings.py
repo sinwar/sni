@@ -137,6 +137,9 @@ INSTALLED_APPS = [
     "bootstrapform",
     "pinax_theme_bootstrap",
 
+    #hastack
+    "haystack",
+
     # external
     "account",
     "pinax.eventlog",
@@ -193,3 +196,11 @@ AUTHENTICATION_BACKENDS = [
     "account.auth_backends.UsernameAuthenticationBackend",
 ]
 
+# haystack connections
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}

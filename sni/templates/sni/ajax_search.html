@@ -1,0 +1,12 @@
+{% if items.count > 0 %}
+
+{%  for item in items %}
+	<tr style="background-color: white; font-size: 30px; margin: 10px;"> 
+			<td> <a href="{{ item.get_absolute_url }}">{{ item.itemname }}</a> </td>
+			<td> <a href="{{ item.get_absolute_url }}">{{ item.rate }} &#8377</a> </td>
+	</tr>
+{% endfor %}
+
+{% else %}
+	<h2> No items! </h2>
+{% endif %}

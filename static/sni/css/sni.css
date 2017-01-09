@@ -13,10 +13,15 @@
     padding-top: 5%;
 }
 
+.search{
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .search input{
     width: 100%;
     padding: 12px 20px;
-    margin-left:4%;
     margin-right: 4%;
     box-sizing: border-box;
 }
@@ -38,3 +43,5 @@
     margin-top: 2%;
     border: black solid 1px;
 }
+
+

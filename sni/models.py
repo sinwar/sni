@@ -31,6 +31,9 @@ class addThing(models.Model):
     def __str__(self):
         return "{0}".format(self.itemname)
 
+    def get_absolute_url(self):
+        return "/buyitem/%i/" % self.id
+
 
 
 class newnotice(models.Model):

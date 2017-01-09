@@ -39,8 +39,14 @@
             {% else %}
             <div class="row">
                 <div class="col-md-8 search">
-                    <input type="text" placeholder="What are you looking for..." >
+                    {% csrf_token %}
+                    <input type="text" id = "search" name = "search" placeholder="What are you looking for..." >
+                    <table id="search-results" class="table table-hover">
+                        <!-- will be triggered by ajax -->
+                    </table>
+
                 </div>
+
                 <div class="col-md-3 col-md-offset-1 addbutton">
                     <a href="{%url 'add_item' %}" class="button btn-lg active"><i class="fa fa-plus fa-2x" > ADD</i></a>
                 </div>

@@ -101,16 +101,16 @@ class addThingCreate(CreateView):
 # view for show allthing on homepage in chronological order
 def homeView(request):
     things = addThing.objects.all().order_by("-datetime")
-    list=[]
+    listi = []
     for i in things:
-        path=""
+        path = ""
         for j in reversed(i.itemimage.url):
             if j == '/':
                 break
             else:
-                path = j+path
-        list.append("{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path))
-    things=zip(things, list)
+                path = j + path
+        listi.append("{0}{1}{2}".format(settings.MEDIA_URL, "/things/", path))
+    things=zip(things, listi)
     return render(request, 'homepage.html',{'things':things})
 
 
@@ -204,3 +204,15 @@ def removeitemonaccept(request, pk, pk1):
     item.delete()
     return redirect('sni.views.notifications')
 
+@login_required
+def search_items(request):
+    if request.method == "POST":
+        search_text = request.POST['search_text']
+    else:
+        search_text = ''
+
+    if search_text != '':
+        items = addThing.objects.filter(itemname__contains = search_text).order_by("rate")
+    else:
+        items = []
+    return render_to_response('sni/ajax_search.html', {'items':items})

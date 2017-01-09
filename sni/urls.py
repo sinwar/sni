@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 
 
-from .views import SignupView, ProfileView, ProView, addThingCreate, homeView, buyitemview, removeitem, noticegenerate, notifications, deletenotification, removeitemonaccept
+from .views import SignupView, ProfileView, ProView, addThingCreate, homeView, buyitemview, removeitem, noticegenerate, notifications, deletenotification, removeitemonaccept, search_items
 
 
 urlpatterns = [
@@ -25,7 +25,8 @@ urlpatterns = [
     url(r"^account/profile/(?P<pk>\d+)/$",ProfileView.as_view(), name = "account_profile"),
     url(r"^account/signup/", SignupView.as_view(), name = "account_signup"),
     url(r"^account/", include("account.urls")),
-    url(r"^chat/", include("chat.urls"))
+    url(r"^chat/", include("chat.urls")),
+    url(r'^search/', search_items),
 ]
 
 

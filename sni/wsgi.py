@@ -15,7 +15,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sni.settings")
 
 application = get_wsgi_application()
 
-'''
+
 from dj_static import Cling, MediaCling
 application = Cling(MediaCling(get_wsgi_application()))
-'''

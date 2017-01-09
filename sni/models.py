@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django import utils
 import datetime
 
 
@@ -27,7 +28,7 @@ class addThing(models.Model):
     details = models.TextField(default=" ")
     rate = models.IntegerField(default=" ")
     itemimage = models.ImageField(default=" ", upload_to = settings.MEDIA_ROOT+"/things/")
-    datetime = models.DateTimeField(default=datetime.datetime.now())
+    datetime = models.DateTimeField(default=utils.timezone.now)
     def __str__(self):
         return "{0}".format(self.itemname)
 

@@ -32,7 +32,7 @@ class SignupForm(account.forms.SignupForm):
         label = _("Hostel"),
         required= True
     )
-    mobile = forms.IntegerField(
+    mobile = forms.CharField(
         label = _("mobile number"),
         required = True
     )
@@ -62,7 +62,7 @@ class SignupForm(account.forms.SignupForm):
     def clean_mobile(self):
         mobile = self.cleaned_data["mobile"]
 
-        if len(str(mobile)) != 10:
+        if len(mobile) != 10:
             raise forms.ValidationError(_("Please Enter your 10 digit mobile number"))
 
         return mobile

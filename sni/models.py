@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     first_name = models.TextField(default = " ")
     last_name = models.TextField(default = " ")
     image = models.ImageField(default = " ", upload_to = settings.MEDIA_ROOT)
-    mobile = models.IntegerField(default = 01234)
+    mobile = models.TextField(default = " ")
     address = models.TextField(default = " ")
     facebook = models.TextField(default = " ")
     def __str__(self):

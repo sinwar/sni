@@ -7,20 +7,21 @@ BASE_DIR = PACKAGE_ROOT
 
 DEBUG = True
 
+'''
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": "dev.db",
     }
 }
-
-# for heroku
 '''
+# for heroku
+
 import dj_database_url
 DATABASES = {
     "default": dj_database_url.config()
 }
-'''
+
 
 ALLOWED_HOSTS = []
 

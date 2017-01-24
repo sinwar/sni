@@ -25,7 +25,6 @@ urlpatterns = [
     url(r"^account/profile/(?P<pk>\d+)/$",ProfileView.as_view(), name = "account_profile"),
     url(r"^account/signup/", SignupView.as_view(), name = "account_signup"),
     url(r"^account/", include("account.urls")),
-    url(r"^chat/", include("chat.urls")),
     url(r'^search/', search_items),
 ]
 

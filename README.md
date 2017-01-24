@@ -1,13 +1,27 @@
 # SNI
 
-SNI- This project is made using reusable app of Django.
+SNI- A django web app for buy and shell things in a particular area.
 
 Technology used :-
+
 1. pinax starter project 
+
 2. django user account
+
 3. pinax theme bootstrap
-4. django haystack
-5. whoosh
-6. pinax notification
+
+4. ajax
+
+
+Live at :-
+
+[SNI APP](https://snibyseenu.herokuapp.com)
+
+TODO:-
+
+1. add location based searching
+
+2. improve frontend
+
 
 

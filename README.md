@@ -1,8 +1,8 @@
 # SNI
 
-SNI- A django web app for buy and shell things in a particular area.
+SNI- A django web app for buy and sell things in a particular area.
 
-Technology used :-
+Technologies used :-
 
 1. pinax starter project 
 

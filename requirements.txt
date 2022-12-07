@@ -2,7 +2,7 @@ Django==1.9.5
 Pillow==3.2.0
 Whoosh==2.7.4
 argparse==1.2.1
-certifi==2016.9.26
+certifi==2022.12.7
 dj-database-url==0.4.2
 dj-static==0.0.6
 django-appconf==1.0.2
